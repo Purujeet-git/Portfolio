@@ -1,52 +1,84 @@
+"use client";
 import React from 'react'
 import { projects } from '@/data'
-import { PinContainer } from './ui/3d-pin'
-import { FaLocationArrow } from 'react-icons/fa'
+import { motion } from 'motion/react'
+import Link from 'next/link'
+
 const RecentProject = () => {
   return (
-    <div className='py-20' id='projects'>
-      <h1 className='text-center text-4xl lg:text-7xl font-bold'>
-        A small selection of {' '}
-        <span className='text-purple-200'>recent projects</span>
-      </h1>
-      <div className='flex flex-wrap items-center justify-center p-4 gap-x-24 gap-y-8 mt-10'>
-        {projects.map(({id,title,des,img,iconLists,link} ) => (
-            <div key={id} className='sm:h-[41rem] h-[31rem] lg:min-h-[32.5rem] flex items-center justify-center sm:w-[570px] w-[80vw]'>
-                <PinContainer title={link} href={link}>
-                    <div className='relative flex items-center justify-center sm:w-[570px] sm:h-[40vh]  w-[80vw] overflow-hidden h-[30vh] mb-10'>
-                        <div className='relative w-full h-full overflow-hidden lg:rounded-3xl bg-[#13162d] '>
-                            <img src={'/bg.png'} alt='bg-img' />
-                        </div>
-                        <img 
-                            src={img}
-                            alt={title}
-                            className='z-10 absolute bottom-0'
-                        />
-                    </div>
-                    <h1 className='font-bold lg:text-2xl md:text-xl text-base line-clamp-1'>
-                        {title}
-                    </h1>
-                    <p className='lg:text-xl lg:font-normal font-light text-sm line-clamp-2 '> 
-                        {des}
-                    </p>
-                    <div className='flex items-center justify-between mt-7 mb-3 '>
-                      <div className='flex items-center'>
-                        {iconLists.map((icon,index) => (
-                          <div key={icon} className='border border-white/[0.2] rounded-full bg-black lg:w-10 lg:h-10 w-8 h-8 flex justify-center items-center ' 
-                            style={{transform:`translateX(-${5 * index * 2}px)`}}
-                          >
-                              <img src={icon} alt={icon} className='p-2' />
-                          </div>
-                        ))}
-                      </div>
+    <div className='py-32 px-4 md:px-10 lg:px-20' id='projects'>
+      <div className='mb-20 overflow-hidden'>
+        <motion.h2 
+          initial={{ y: "100%" }}
+          whileInView={{ y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
+          className='text-5xl md:text-7xl font-black uppercase tracking-tighter'
+        >
+          Selected Works
+        </motion.h2>
+      </div>
 
-                      <div className='flex justify-center items-center'>
-                        <p className='flex lg:text-xl md:text-xs text-sm text-purple'>Check Live Site</p>
-                        <FaLocationArrow className='ms-3' color='#CBACF9'/>
+      <div className='flex flex-col gap-24'>
+        {projects.map(({id, title, des, img, iconLists, link, tags}, index) => (
+          <div key={id} className={`flex flex-col gap-8 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} items-center`}>
+            
+            {/* Image Container */}
+            <Link href={link} className="flex-1 w-full overflow-hidden relative group hover-target block">
+              <div className="w-full aspect-video bg-[#13162d] dark:bg-zinc-900 border border-black/10 dark:border-white/10 overflow-hidden relative">
+                {img ? (
+                  <img 
+                    src={img} 
+                    alt={title} 
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center text-4xl font-black opacity-10">
+                    {title}
+                  </div>
+                )}
+                {/* Overlay on hover */}
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500 pointer-events-none" />
+              </div>
+            </Link>
+
+            {/* Content Container */}
+            <div className="flex-1 w-full flex flex-col justify-center">
+              <span className="text-sm font-medium tracking-widest uppercase mb-4 opacity-70">
+                0{index + 1}
+              </span>
+              <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 tracking-tight">
+                {title}
+              </h3>
+              <p className="text-lg md:text-xl opacity-70 mb-8 max-w-xl">
+                {des}
+              </p>
+              
+              <div className="flex flex-col gap-4 border-t border-black/10 dark:border-white/10 pt-6">
+                <div className="flex items-center gap-4">
+                  <span className="text-sm uppercase tracking-widest">Tech Stack:</span>
+                  <div className="flex gap-2">
+                    {iconLists && iconLists.map((icon, i) => (
+                      <div key={i} className="w-8 h-8 rounded-full border border-black/20 dark:border-white/20 p-1.5 flex items-center justify-center bg-black/5 dark:bg-white/5">
+                        <img src={icon} alt="tech-icon" className="w-full h-full object-contain" />
                       </div>
-                    </div>
-                </PinContainer>
+                    ))}
+                  </div>
+                </div>
+                
+                {tags && tags.length > 0 && (
+                  <div className="flex flex-wrap gap-2 mt-2">
+                    {tags.map((tag, tIndex) => (
+                      <span key={tIndex} className="text-xs font-bold px-3 py-1 bg-black/10 dark:bg-white/10 rounded-full">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
+
             </div>
+          </div>
         ))}
       </div>
     </div>

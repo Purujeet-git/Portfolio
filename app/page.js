@@ -1,26 +1,21 @@
-import Image from "next/image";
 import Hero from "./components/Hero";
-import { FloatingNav } from "./components/ui/FloatingNav";
-import { FaHome } from "react-icons/fa";
-import Grid from "./components/Grid";
+import TechMarquee from "./components/TechMarquee";
 import RecentProject from "./components/RecentProject";
-import { navItems } from "@/data";
-import Clients from "./components/Clients";
-import Experience from "./components/Experience";
-import Approach from "./components/Approach";
+import About from "./components/About";
+import ContactForm from "./components/ContactForm";
+
 export default function Home() {
   return (
-    <main className="relative flex justify-center bg-black items-center flex-col overflow-hidden mx-auto sm:px-10">
-      <div className="max-w-7xl w-full">
-        <FloatingNav navItems={navItems} className={[
-
-        ]}/>
+    <main className="relative flex justify-center items-center flex-col overflow-hidden mx-auto selection:bg-black selection:text-white dark:selection:bg-white dark:selection:text-black">
+      <div className="w-full">
+        {/* We omitted FloatingNav to align with a more minimal aesthetic, or it can be reimagined later */}
         <Hero/>
-        <Grid/>
-        <RecentProject/>
-        <Clients/>
-        <Experience/>
-        <Approach/>
+        <TechMarquee/>
+        <div className="max-w-7xl mx-auto w-full sm:px-10">
+          <RecentProject/>
+          <About/>
+          <ContactForm/>
+        </div>
       </div>
     </main>
   );

@@ -1,54 +1,58 @@
+"use client";
 import React from 'react'
-import { Spotlight } from './ui/Spotlight'
-import { cn } from '@/lib/utils'
-import { TextGenerateEffect } from './ui/TextGenerateEffect'
+import { motion } from 'motion/react'
 import Link from 'next/link'
-import MagicButton from './ui/MagicButton'
 import { TiLocationArrowOutline } from "react-icons/ti";
 
 const Hero = () => {
   return (
-    <div className='pb-20 pt-36'>
-      <div>
-        <Spotlight className="-top-40 -left-10 md:-left-32 md:-top-20 h-screen" fill='white'/>
-        <Spotlight className="top-10 left-full h-[80vh] w-[50vw]" fill='purple'/>
-        <Spotlight className="top-28 left-80 h-[80vh] w-[50vw]" fill='blue'/>
-        <div className="absolute top-0 left-0 flex h-[50rem] w-full items-center justify-center bg-white dark:bg-black">
-      <div
-        className={cn(
-          "absolute inset-0",
-          "[background-size:40px_40px]",
-          "[background-image:linear-gradient(to_right,#e4e4e7_1px,transparent_1px),linear-gradient(to_bottom,#e4e4e7_1px,transparent_1px)]",
-          "dark:[background-image:linear-gradient(to_right,#262626_1px,transparent_1px),linear-gradient(to_bottom,#262626_1px,transparent_1px)]",
-        )}
-      />
-      
-      {/* Radial gradient for the container to give a faded look */}
-      
-    </div>
-    <div className='flex justify-center relative my-20 z-10'>
-        <div className='max-w-[89vw] md:max-w-2xl lg:max-w-[60vw] flex flex-col items-center justify-center'>
-          <h2 className='uppercase tracking-widest text-xs text-center text-blue-100 max-w-80'>
-            Dynamic Web Magic with Nextjs
-          </h2>
-          <TextGenerateEffect 
-          className={"text-center text-[40px] md:text-5xl lg:text-6xl"}
-          words={"Transforming Concepts into Seamless Experience"}
-
-          />
-          <p className='text-center mb-4 text-sm md:text-lg lg:text-2xl'>
-            Hi, I am Purujeet, a Nextjs Developer based in India.
-          </p>
-          <Link href={"#about"}>
-          <MagicButton
-          title='Show my work'
-          icon={<TiLocationArrowOutline />}
-          position='right'
-          />
-           </Link>
+    <div className='min-h-screen flex flex-col justify-center px-4 md:px-10 lg:px-20 pt-20 relative overflow-hidden'>
+      <div className='flex flex-col z-10 space-y-6'>
+        <div className='overflow-hidden uppercase'>
+          <motion.h1 
+            initial={{ y: "100%" }}
+            animate={{ y: 0 }}
+            transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
+            className='text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.85]'
+          >
+            Digital Web
+          </motion.h1>
         </div>
+        <div className='overflow-hidden uppercase flex justify-start md:justify-end md:pr-20'>
+          <motion.h1 
+            initial={{ y: "100%" }}
+            animate={{ y: 0 }}
+            transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.1 }}
+            className='text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.85]'
+          >
+            Experience
+          </motion.h1>
+        </div>
+        
+        <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.5 }}
+            className='max-w-md mt-10 text-lg md:text-xl font-medium tracking-wide'
+        >
+          Hi, I am Purujeet, a Next.js Developer based in India crafting premium digital experiences.
+        </motion.div>
       </div>
-      </div>
+
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 0.8 }}
+        className="absolute bottom-10 right-10 flex flex-col md:flex-row gap-6 items-end md:items-center"
+      >
+        <Link href="/resume" className="flex bg-red-900 p-5 rounded-full dark:bg-red-100 items-center gap-2 text-sm uppercase tracking-widest font-bold border-b-2 border-transparent hover:border-black dark:hover:border-white transition-all hover-target">
+          <span>View Resume</span>
+        </Link>
+        <Link href="#projects" className="flex items-center gap-2 text-sm uppercase tracking-widest hover-target">
+          <span>Scroll to explore</span>
+          <TiLocationArrowOutline className="transform rotate-45 text-xl" />
+        </Link>
+      </motion.div>
     </div>
   )
 }
