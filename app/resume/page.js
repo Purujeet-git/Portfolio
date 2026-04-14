@@ -97,7 +97,7 @@ export default function ResumePage() {
           <div className="flex flex-col gap-2">
             <h2 className="text-2xl font-black uppercase tracking-tight border-b-2 border-black pb-1">Education</h2>
             <div className="flex flex-col mt-2">
-              <p className="font-bold">Bachelor's Degree (Pursuing) <span className="font-normal opacity-80">| Lovely Professional University</span></p>
+              <p className="font-bold">Bachelor&apos;s Degree (Pursuing) <span className="font-normal opacity-80">| Lovely Professional University</span></p>
               <p className="text-sm opacity-80 mt-1">Expected Graduation: 2028</p>
             </div>
           </div>

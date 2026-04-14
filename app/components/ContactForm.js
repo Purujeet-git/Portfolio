@@ -48,7 +48,7 @@ export default function ContactForm() {
           transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
           className='text-5xl md:text-7xl text-white font-black uppercase tracking-tighter'
         >
-          Let's Talk
+          Let&apos;s Talk
         </motion.h2>
       </div>
 
@@ -69,7 +69,7 @@ export default function ContactForm() {
                 type="text" 
                 name="name"
                 required 
-                placeholder="What's your name?" 
+                placeholder="What&apos;s your name?" 
                 className="w-full bg-transparent outline-none text-white text-xl md:text-2xl font-bold placeholder-white dark:placeholder-white/30 hover-target" 
               />
             </div>
@@ -78,7 +78,7 @@ export default function ContactForm() {
                 type="email" 
                 name="email"
                 required 
-                placeholder="What's your email?" 
+                placeholder="What&apos;s your email?" 
                 className="w-full bg-transparent outline-none text-white text-xl md:text-2xl font-bold placeholder-white dark:placeholder-white/30 hover-target" 
               />
             </div>

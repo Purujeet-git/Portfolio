@@ -30,7 +30,7 @@ export default function About() {
         </p>
         
         <p className="mt-10 text-lg md:text-xl lg:text-2xl font-medium leading-relaxed opacity-80 max-w-3xl">
-          This is a minimal website because it doesn't need to be anything else. It exists to show what I do, what I have done, and why I build things.
+          This is a minimal website because it doesn&apos;t need to be anything else. It exists to show what I do, what I have done, and why I build things.
         </p>
 
         <p className="mt-10 text-lg md:text-xl lg:text-2xl font-medium leading-relaxed opacity-80 max-w-3xl border-l-2 border-black dark:border-white pl-6">
