@@ -45,7 +45,7 @@ const Hero = () => {
         transition={{ duration: 1, delay: 0.8 }}
         className="absolute bottom-10 right-10 flex flex-col md:flex-row gap-6 items-end md:items-center"
       >
-        <Link href="/resume" className="flex bg-red-900 p-5 rounded-full dark:bg-red-100 items-center gap-2 text-sm uppercase tracking-widest font-bold border-b-2 border-transparent hover:border-black dark:hover:border-white transition-all hover-target">
+        <Link href="/resume" className="flex bg-red-900 p-5 rounded-full dark:bg-red-100 items-center gap-2 text-black text-sm uppercase tracking-widest font-bold border-b-2 border-transparent hover:border-black dark:hover:border-white transition-all hover-target">
           <span>View Resume</span>
         </Link>
         <Link href="#projects" className="flex items-center gap-2 text-sm uppercase tracking-widest hover-target">
